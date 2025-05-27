@@ -35,10 +35,10 @@ async def _query_server(name_like: str = None, offset: int = 0, limit: int = 50)
 async def query_server(name: str = None, offset: int = 0, limit: int = 50):
     """
     Query the server list with optional fuzzy name matching and pagination.
-    :param name:
-    :param offset:
-    :param limit:
-    :return:
+    :param name: Optional name to filter servers by a fuzzy match.
+    :param offset: The starting point for pagination.
+    :param limit: The maximum number of servers to return.
+    :return: A list of servers in JSON format.
     """
     res = await _query_server(name, offset=offset, limit=limit)
     return json.dumps(res)
@@ -48,8 +48,8 @@ async def query_server(name: str = None, offset: int = 0, limit: int = 50):
 async def get_server(server_name: str):
     """
     Retrieves detailed information about a specific server by its name.
-    :param server_name:
-    :return:
+    :param server_name: The name of the server to retrieve information for.
+    :return: A JSON object containing the server's details.
     """
     async with httpx.AsyncClient() as client:
         response = await client.get(f'{API_URL}/{server_name}', headers=HEADERS, timeout=1 * 60)
@@ -67,10 +67,9 @@ async def add_update_rating_review(
 ):
     """
     Adds or updates a rating and review for a specific server.
-    :param server_name:
-    :param rating:
-    :param review:
-    :return:
+    :param server_name: The name of the server to add or update the rating and review for.
+    :param rating: The rating to give the server, between 1.0 and 5.0.
+    :param review: The review text to add or update for the server.
     """
     servers = await _query_server(server_name)
     if isinstance(servers, list) and len(servers) > 1:
