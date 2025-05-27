@@ -46,7 +46,7 @@ Add this tool as a mcp server by editing the Cursor/Claude/Windsurf config file.
 ```json
 {
   "mcpServers": {
-    "review": {
+    "netmind-mcpserver-mcp": {
       "env": {
         "NETMIND_API_TOKEN": "XXXXXXXXXXXXXXXXXXXX"
       },
