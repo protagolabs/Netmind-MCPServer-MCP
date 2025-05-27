@@ -52,7 +52,7 @@ Add this tool as a mcp server by editing the Cursor/Claude/Windsurf config file.
       },
       "command": "uvx",
       "args": [
-        "netmind-review-mcp"
+        "netmind-mcpserver-mcp"
       ]
     }
   }
